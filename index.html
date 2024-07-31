@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+    background: #fff;
+    transition: 0.5s;
+    position: relative;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #fff; /* Default light mode background */
+    color: #333; /* Default light mode text color */
+    z-index: 1000;
+    transition: 0.5s;
+}
+
+header .logo {
+    color: #333; /* Default light mode logo color */
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+header .logo span {
+    color: orange; /* Default light mode span color */
+}
+
+nav {
+    display: flex;
+}
+
+.menu {
+    display: flex;
+    gap: 40px;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: #333; /* Default light mode menu color */
+    transition: 0.5s;
+}
+
+.menu li a:hover {
+    color: deepskyblue;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 2px;
+    width: 25px;
+    background: #333;
+    margin-bottom: 4px;
+    border-radius: 5px;
+}
+
+.banner.night {
+    background: #333; /* Night mode background color */
+}
+
+.banner.night header {
+    background: #222; /* Night mode header background color */
+    color: #fff; /* Night mode header text color */
+}
+
+.banner.night header .logo {
+    color: #fff; /* Night mode logo color */
+}
+
+.banner.night header .logo span {
+    color: orange; /* Night mode logo span color */
+}
+
+.banner.night .menu li a {
+    color: #fff; /* Night mode menu color */
+}
+
+.banner.night .menu li a:hover {
+    color: deepskyblue;
+}
+
+.content {
+    text-align: center;
+    max-width: 700px;
+    margin: 80px 20px 20px;
+}
+
+.content h2 {
+    font-size: 3em;
+    color: #333; /* Default light mode text color */
+}
+
+.content span {
+    color: orange;
+}
+
+.content p {
+    font-size: 1.7em;
+    color: #666; /* Default light mode text color */
+    margin: 10px 0;
+}
+
+button {
+    background: orange;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 15px 35px;
+    font-size: 1.25em;
+    letter-spacing: 0.05em;
+    margin: 10px 10px 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 600;
+}
+
+.content button.chat {
+    background: transparent;
+    color: #333; /* Default light mode button text color */
+}
+
+.banner.night .content h2,
+.banner.night .content p,
+.banner.night .content button.chat, .banner.night .about{
+    color: #fff; /* Night mode text color for content */
+}
+
+.daynight {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: 2em;
+    transform: translateX(-50%);
+}
+
+.daynight ion-icon:nth-child(2),
+.banner.night .daynight ion-icon:nth-child(1) {
+    display: none;
+}
+
+.banner.night .daynight ion-icon:nth-child(2) {
+    display: block;
+}
+
+.about {
+    max-width: 700px;
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    header {
+        padding: 20px 30px;
+    }
+
+    nav .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    nav.active .menu {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .content h2 {
+        font-size: 2.5em;
+    }
+
+    .content p {
+        font-size: 1.2em;
+    }
+
+    button {
+        margin: 10px;
+    }
+
+    .daynight {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav.active .menu {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .content {
+        max-width: 100%;
+        margin: 20px 10px;
+    }
+
+    .content h2 {
+        font-size: 2em;
+    }
+
+    .content p {
+        font-size: 1em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .daynight {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5em;
+    }
+
+    .about {
+        max-width: 100%;
+        font-size: 1em;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <section class="banner">
+        <header>
+            <a href="#" class="logo">Sonu <span>Shah</span></a>
+            <nav>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#Work">Work</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content">
+            <h2>I am <span id="text"></span></h2>
+            <p>Let's break chain matrixs <span class="dots"></span></p>
+            <button>join us</button>
+            <button class="chat">Lets chat</button>
+        </div>
+        <div class="daynight">
+            <ion-icon name="moon-outline"></ion-icon>
+            <ion-icon name="sunny-outline"></ion-icon>
+        </div>
+        <section class="about">
+            <div>
+                <h4>Hello everyone,</h4>
+                <p>Recent MAC graduate from LJ University (2024) with
+                    practical experience from internships and academic projects.
+                    Excels in problem-solving, analytical thinking, and
+                    collaboration. Known for creativity, attention to detail, and
+                    quick learning. Eager to apply skills to a dynamic team and
+                    contribute to Web development. Looking for opportunities to
+                    grow professionally and make a significant impact</p>
+            </div>
+        </section>
+    </section>
+    <script>
+        let daynight = document.querySelector(".daynight");
+let banner = document.querySelector(".banner");
+
+
+daynight.addEventListener("click",()=>{
+    banner.classList.toggle("night")
+})
+
+
+let typing = new Typed('#text', {
+    strings : ["Sonu", "Coder", "Gamer"],
+    loop: true,
+    typeSpeed: 50,
+    backSpeed: 50,
+    backDelay: 1000,
+    showCursor: false
+})
+
+let dots = new Typed(".dots", {
+    strings: ["........."],
+    loop: true,
+    typeSpeed:100,
+    backSpeed:50,
+    backDelay:1000,
+    showCursor: false 
+})
+
+
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+    </script>
+    
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
